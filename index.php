@@ -2,8 +2,8 @@
 
   $url = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/e167c678-2188-4665-b306-96637b8cd51c";
   $apikey = "z7YeOpDC16-zY09vrNgk49DhADD-YZpuLQrqtf8mVA6l";
-  //$path_to_file = "../audio/1.mp3";
-  //$path_to_file = realpath("../audio/1.mp3");
+  //$path_to_file = "audio/1.mp3";
+  //$path_to_file = realpath("audio/1.mp3");
   //$path_to_file = "https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac";
   $path_to_file = "http://zeddevelopers.com/testing/1.mp3";
 

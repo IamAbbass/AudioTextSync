@@ -41,6 +41,7 @@
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $executed = curl_exec($ch);
+    
     echo $executed;
     curl_close($ch);
     //var_dump($executed);

@@ -11,7 +11,7 @@
     $filename = $_FILES['voice']['name'];
     $filedata = $_FILES['voice']['tmp_name'];
     $file = fopen($filename, 'r');
-    $filesize = $_FILES['voice']['size'];;
+    $filesize = $_FILES['voice']['size'];
     $bytes = 10000;
     //D:\xampp\htdocs\zed\AudioTextSync\audio
 
@@ -47,9 +47,6 @@
     //var_dump($executed);
     exit;
   }
-
-
-
 ?>
 
 <form method="post" name="post_form" enctype="multipart/form-data">

@@ -10,14 +10,68 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/simpleaudioplayer.min.css') }}" crossorigin="anonymous">
+    <script src="{{ asset('js/jquery.simpleaudioplayer.js') }}" crossorigin="anonymous"></script>
+
+
+
+
+    <style>
+      .pull-right{
+        float: right !important;
+      }
+      .pull-left{
+        float: left !important;
+      }
+      audio{
+          outline: none !important;
+      }
+      .word_timestamps{
+
+      }
+      .word_timestamps span.ts_word{
+        font-size: 24px;
+        cursor: pointer;
+        text-decoration: underline;
+        margin-right: 8px;
+        border-radius: 3px;
+        padding:0 3px;
+      }
+      .word_timestamps span.ts_word:hover{
+        background: #eee;
+      }
+      .word_timestamps span.ts_word:active{
+        color: #007bff;
+      }
+      .word_timestamps span.active{
+        background: #007bff;
+        color: #fff;
+      }
+      .aword_timestamps {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+      }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -33,7 +87,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
 
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

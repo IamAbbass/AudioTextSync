@@ -21,3 +21,4 @@ Route::get('/', 'AudioController@index');
 Route::get('/create', 'AudioController@create');
 Route::post('/', 'AudioController@store');
 Route::get('/{audio_id}', 'AudioController@show');
+Route::get('/{audio_id}/json', 'AudioController@show_json');

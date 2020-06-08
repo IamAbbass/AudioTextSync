@@ -46,7 +46,8 @@
                             <td>{{ \Carbon\Carbon::parse($audio->created_at)->calendar() }}</td>
                             <th>
 
-                              <a href="/{{$audio->id}}" class="btn btn-primary float-left mr-2">View</a>
+                              <a href="/{{$audio->id}}" class="btn btn-primary float-left mr-2">View Timestamps</a>
+                              <a href="/{{$audio->id}}/json" class="btn btn-warning float-left mr-2">View JSON</a>
 
                               <!--
                               <a href="/edit/{{$audio->id}}" class="btn btn-warning float-left mr-2">Edit</a>

@@ -102,13 +102,9 @@
 
     $(".words_count span").text($(".ts_word").length);
 
-
     var story_audio = $("#story_audio")[0];
 
-    story_audio.addEventListener("timeupdate", function(){
-      var current_time = story_audio.currentTime;
-      console.log(current_time);
-
+    function highlight_word(current_time){
       $(".ts_word").removeClass("active");
       $(".ts_word").each(function(){
         var start = +$(this).attr('start');
@@ -117,7 +113,25 @@
           $(this).addClass('active');
         }
       });
+    }
+
+    var fastCallBack;
+    story_audio.addEventListener("play", function(){
+      fastCallBack = setInterval(function(){
+        var current_time = story_audio.currentTime;
+        highlight_word(current_time);
+      },0.001);
     });
+
+    story_audio.addEventListener("pause", function(){
+      try{
+        clearInterval(fastCallBack);
+      }catch(e){}
+    });
+
+    //story_audio.addEventListener("timeupdate", function(){
+      //highlight_word(current_time);
+    //});
 
     $(".playbackRate").change(function(){
       story_audio.playbackRate = +$(".playbackRate").val();

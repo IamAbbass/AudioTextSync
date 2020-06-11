@@ -19,8 +19,7 @@
 
 
                 @php
-                  //$audio_path = '../uploads/'.$audio->audio_path;
-                  $audio_path = asset('/uploads/'.$audio->audio_path);
+                  $audio_path = asset(config('app.upload_path', 'uploads/').$audio->audio_path);
                   $audio_json   =  (array) json_decode($audio->json, true);
                   $word_timestamps = $audio_json['results'][0]['alternatives'][0]['timestamps'];
                   $words_count  = count($word_timestamps);
@@ -70,7 +69,7 @@
                       <div class="word_timestamps">
                         @foreach($audio_json['results'] as $results)
                           @foreach($results['alternatives'][0]['timestamps'] as $word_timestamp)
-                            <span class="ts_word" start="{{$word_timestamp[1]}}" end="{{$word_timestamp[2]}}" data-toggle="tooltip" data-placement="top" title="{{ $word_timestamp[1] }}s - {{ $word_timestamp[2] }}s">{{ $word_timestamp[0] }}</span>
+                            <span class="ts_word" start="{{$word_timestamp[1]}}" end="{{$word_timestamp[2]}}" data-toggle="tooltip" data-placement="top" title="{{ $word_timestamp[1] }}s - {{ $word_timestamp[2] }}s ({{ ($word_timestamp[2]-$word_timestamp[1]) }}s)">{{ $word_timestamp[0] }}</span>
                           @endforeach
                         @endforeach
                       </div>
@@ -95,10 +94,13 @@
 
     $(".words_count span").text($(".ts_word").length);
 
+
     var story_audio = $("#story_audio")[0];
 
     story_audio.addEventListener("timeupdate", function(){
       var current_time = story_audio.currentTime;
+      console.log(current_time);
+
       $(".ts_word").removeClass("active");
       $(".ts_word").each(function(){
         var start = +$(this).attr('start');

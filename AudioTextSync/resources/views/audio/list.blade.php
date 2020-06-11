@@ -36,7 +36,7 @@
                             <td>{{ $audio->name ? $audio->name : 'No Story Name' }}</td>
                             <td>
                                 @php
-                                  $audio_path = asset('/uploads/'.$audio->audio_path);
+                                  $audio_path = asset(config('app.upload_path', 'uploads/').$audio->audio_path);
                                 @endphp
                                 <audio controls>
                                   <source src="{{ $audio_path }}" type="audio/mpeg">

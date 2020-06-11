@@ -64,6 +64,14 @@
                           Your browser does not support the audio element.
                       </audio>
 
+                      <br/>
+
+                      <select class="playbackRate">
+                        <option selected value="1.0">1.0 is normal speed</option>
+                        <option value="0.5">0.5 is half speed (slower)</option>
+                        <option value="2.0">2.0 is double speed (faster)</option>
+                      </select>
+
                       <hr/>
 
                       <div class="word_timestamps">
@@ -109,6 +117,10 @@
           $(this).addClass('active');
         }
       });
+    });
+
+    $(".playbackRate").change(function(){
+      story_audio.playbackRate = +$(".playbackRate").val();
     });
 
     $(".ts_word").click(function(){

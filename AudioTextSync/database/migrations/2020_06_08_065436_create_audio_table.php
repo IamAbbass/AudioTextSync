@@ -19,7 +19,7 @@ class CreateAudioTable extends Migration
             $table->text('audio_path');
             $table->string('audio_size');
             $table->string('audio_mime_type');
-            $table->text('json')->nullable();
+            $table->longText('json')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

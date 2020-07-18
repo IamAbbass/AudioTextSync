@@ -27,7 +27,11 @@ class AudioController extends Controller
 
     public function store(Request $request)
     {
-        ini_set('max_execution_time', 300);
+        // $request->validate([
+        //     'audio' => 'required|mimes:mpeg,flac,mpga|max:5120',
+        // ]);
+
+        ini_set('max_execution_time', 3600);
         $url = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/e167c678-2188-4665-b306-96637b8cd51c/v1/recognize?timestamps=true&max_alternatives=3";
         $apikey = "z7YeOpDC16-zY09vrNgk49DhADD-YZpuLQrqtf8mVA6l";
 
@@ -37,7 +41,6 @@ class AudioController extends Controller
         $filename = $_FILES['audio']['name'];
         $filedata = $_FILES['audio']['tmp_name'];
         $filesize = $_FILES['audio']['size'];
-        $bytes = 10000;
         //D:\xampp\htdocs\zed\AudioTextSync\audio
 
         $type =  mime_content_type($filedata);
@@ -47,10 +50,7 @@ class AudioController extends Controller
         // echo $filesize."<br/>";
         // echo $type."</br>";
 
-        $post = array(
-        "file" =>
-        curl_file_create($filedata,$type,$filename)
-        );
+        $post = array("file" =>curl_file_create($filedata,$type,$filename));
 
         $data = array('part_content_type' => $type);
         $headers = array("Content-Type: $type", "Transfer-Encoding: chunked");
@@ -68,10 +68,6 @@ class AudioController extends Controller
         $text_json = curl_exec($ch);
         curl_close($ch);
 
-
-        $request->validate([
-            'audio' => 'required|mimes:mpeg,flac,mpga|max:5120',
-        ]);
         $insert = array();
         $insert['audio_size'] = $request->file('audio')->getSize();
         $insert['audio_mime_type'] = $request->file('audio')->getMimeType();

@@ -52,6 +52,11 @@
                           <th>Words Count:</th>
                           <td class="words_count"><span></span> Words</td>
                         </tr>
+                        <tr>
+                          <th colspan="2">
+                            <a href="/{{ $audio->id }}/download" class="btn btn-primary btn-block">Download Text</a>
+                          </th>
+                        </tr>
                         <!-- <tr>
                           <th>Confidence:</th>
                           <td>{{ ($audio_json['results'][0]['alternatives'][0]['confidence'])*100 }}%</td>

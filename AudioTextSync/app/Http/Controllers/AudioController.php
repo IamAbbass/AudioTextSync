@@ -95,6 +95,38 @@ class AudioController extends Controller
         ]);
     }
 
+    public function download($id)
+    {
+        $audio = Audio::findOrFail($id);
+
+        $file = $audio->name.".txt";
+        $txt = fopen($file, "w") or die("Unable to open file!");
+
+        $data = "";
+        $audio_json   =  (array) json_decode($audio->json, true);
+        
+        foreach($audio_json['results'] as $results){
+            foreach($results['alternatives'][0]['timestamps'] as $word_timestamp){
+                $data .= $word_timestamp[0]." ";
+            }
+        }
+
+        fwrite($txt, $data);
+        fclose($txt);
+
+        header('Content-Description: File Transfer');
+        header('Content-Disposition: attachment; filename='.basename($file));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        header("Content-Type: text/plain");
+        readfile($file);
+    }
+
+    
+
+
     public function show_json($id)
     {
         $audio = Audio::findOrFail($id);

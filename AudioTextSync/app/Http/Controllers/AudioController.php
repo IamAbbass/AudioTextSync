@@ -32,7 +32,8 @@ class AudioController extends Controller
         // ]);
 
         ini_set('max_execution_time', 3600);
-        $url = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/e167c678-2188-4665-b306-96637b8cd51c/v1/recognize?timestamps=true&max_alternatives=3";
+        $url = "https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/e167c678-2188-4665-b306-96637b8cd51c/v1/recognize?timestamps=true&max_alternatives=3&model=zh-CN_BroadbandModel";
+             
         $apikey = "z7YeOpDC16-zY09vrNgk49DhADD-YZpuLQrqtf8mVA6l";
 
         $username = "apikey";
